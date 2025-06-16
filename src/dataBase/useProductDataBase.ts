@@ -19,7 +19,7 @@ export function useProductDataBase() {
         $quantity: data.quantity,
       });
 
-      const insertedRowId = result.lastInsertRowId.toLocaleString();
+      const insertedRowId = result.lastInsertRowId;
       return { insertedRowId };
     } catch (error) {
       throw error;
