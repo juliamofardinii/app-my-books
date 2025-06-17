@@ -28,6 +28,23 @@ export function useProductDataBase() {
     }
   }
 
+  async function update(data: ProductDataBase) {
+    const statement = await database.prepareAsync(
+      "UPDATE  products SET name = $name, quantity = $quantity WHERE id = $id"
+    );
+    try {
+      await statement.executeAsync({
+        $id: data.id,
+        $name: data.name,
+        $quantity: data.quantity,
+      });
+    } catch (error) {
+      throw error;
+    } finally {
+      await statement.finalizeAsync();
+    }
+  }
+
   async function searchByName(name: string) {
     try {
       const query = "SELECT * FROM products WHERE name LIKE ?"; // * para selecionar todos, ? para nomeados
@@ -43,5 +60,5 @@ export function useProductDataBase() {
     }
   }
 
-  return { create, searchByName };
+  return { create, searchByName, update };
 }
