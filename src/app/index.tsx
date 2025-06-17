@@ -31,8 +31,12 @@ export default function Index() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", padding: 32, gap: 16 }}>
-      <Input placeholder="Nome" />
-      <Input placeholder="Quantidade" />
+      <Input placeholder="Nome" onChangeText={setName} value={name} />
+      <Input
+        placeholder="Quantidade"
+        onChangeText={setQuantity}
+        value={quantity}
+      />
       <Button title="Salvar" onPress={create} />
     </View>
   );
