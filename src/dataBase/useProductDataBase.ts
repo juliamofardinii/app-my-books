@@ -23,8 +23,25 @@ export function useProductDataBase() {
       return { insertedRowId };
     } catch (error) {
       throw error;
+    } finally {
+      await statement.finalizeAsync();
     }
   }
 
-  return { create };
+  async function searchByName(name: string) {
+    try {
+      const query = "SELECT * FROM products WHERE name LIKE ?"; // * para selecionar todos, ? para nomeados
+
+      const response = await database.getAllAsync<ProductDataBase>(
+        query,
+        `%${name}%`
+      );
+
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  return { create, searchByName };
 }
