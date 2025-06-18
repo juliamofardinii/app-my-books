@@ -4,6 +4,7 @@ import {
   ProductDataBase,
   useProductDataBase,
 } from "@/dataBase/useProductDataBase";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Button, FlatList, View } from "react-native";
 
@@ -49,7 +50,7 @@ export default function Index() {
         quantity: Number(quantity),
       });
 
-      Alert.alert("Produto cadastrado com o ID:  " + response.insertedRowId);
+      Alert.alert("Produto atualizado!");
     } catch (error) {
       console.log(error);
     }
@@ -59,6 +60,15 @@ export default function Index() {
     try {
       const response = await productDataBase.searchByName(search);
       setProducts(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function remove(id: number) {
+    try {
+      await productDataBase.remove(id);
+      await list();
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +90,7 @@ export default function Index() {
     setId("");
     setName("");
     setQuantity("");
-    await list;
+    await list();
   }
 
   useEffect(() => {
@@ -103,7 +113,17 @@ export default function Index() {
         data={products}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
-          <Product data={item} onPress={() => details(item)} />
+          <Product
+            data={item}
+            onPress={() => details(item)}
+            onDelete={() => remove(item.id)}
+            onOpen={() =>
+              router.push({
+                pathname: "/details/[id]",
+                params: { id: String(item.id) },
+              })
+            }
+          />
         )}
         contentContainerStyle={{ gap: 16 }}
       />

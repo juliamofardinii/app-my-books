@@ -45,6 +45,14 @@ export function useProductDataBase() {
     }
   }
 
+  async function remove(id: number) {
+    try {
+      await database.execAsync("DELETE FROM products WHERE id = " + id);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async function searchByName(name: string) {
     try {
       const query = "SELECT * FROM products WHERE name LIKE ?"; // * para selecionar todos, ? para nomeados
@@ -60,5 +68,17 @@ export function useProductDataBase() {
     }
   }
 
-  return { create, searchByName, update };
+  async function show(id: number) {
+    try {
+      const query = "SELECT * FROM products WHERE id = ? ";
+      const response = await database.getFirstAsync<ProductDataBase>(query, [
+        id,
+      ]);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  return { create, searchByName, update, remove, show };
 }
