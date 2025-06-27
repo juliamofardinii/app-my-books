@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+# 🚧 Litlog – Catálogo de Livros Offline 📚
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> ⚠️ **Este projeto está em desenvolvimento. Algumas funcionalidades podem não estar finalizadas.**
 
-## Get started
+Litlog é um aplicativo mobile para organizar seus livros offline. A proposta é oferecer um espaço simples e intuitivo para registrar leituras concluídas, em andamento ou futuras – tudo de forma pessoal e sem depender de internet.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## ✨ Funcionalidades
 
-2. Start the app
+- ✅ **Cadastro de livros** com:
+  - Título
+  - Autor
+  - Status: `Lido`, `Lendo`, `Quero Ler`
+  - Nota
+  - Resenha pessoal
 
-   ```bash
-   npx expo start
-   ```
+- 📖 **Tabs organizadas** por status:
+  - Lidos
+  - Lendo
+  - Quero ler
 
-In the output, you'll find options to open the app in a
+- 🔁 **Scroll infinito** para visualização da lista completa de livros.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 🎯 **Filtros e ordenações** por:
+  - Status
+  - Nota
+  - Autor
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- 📊 **Contagem de livros** conforme os filtros aplicados.
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🧠 Aprendizados em foco
 
-```bash
-npm run reset-project
-```
+- Scroll com carregamento contínuo (infinite scroll).
+- Filtros dinâmicos e ordenação combinada.
+- Organização de dados por grupos (status, autor, etc.).
+- Gerenciamento local de dados sem backend.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 📌 Status do Projeto
 
-To learn more about developing your project with Expo, look at the following resources:
+🚧 Em construção. Este repositório está sendo desenvolvido ativamente.  
+Sugestões, ideias e feedbacks são sempre bem-vindos!
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 📁 Repositório
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+https://github.com/juliamofardinii/app-my-books
