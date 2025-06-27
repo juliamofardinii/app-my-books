@@ -4,11 +4,12 @@ import {
   ProductDataBase,
   useProductDataBase,
 } from "@/dataBase/useProductDataBase";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Button, FlatList, View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
   const [id, setId] = useState("");
   const [bookName, setBookName] = useState("");
   const [author, setAuthor] = useState("");
