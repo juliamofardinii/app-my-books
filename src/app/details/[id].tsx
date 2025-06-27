@@ -6,8 +6,9 @@ import { useProductDataBase } from "../../dataBase/useProductDataBase";
 
 export default function Details() {
   const [data, setData] = useState({
-    name: "",
-    quantity: 0,
+    bookName: "",
+    author: "",
+    status: "",
   });
 
   const productDataBase = useProductDataBase();
@@ -18,8 +19,9 @@ export default function Details() {
       productDataBase.show(Number(params.id)).then((response) => {
         if (response) {
           setData({
-            name: response.name,
-            quantity: response.quantity,
+            bookName: response.bookName,
+            author: response.author,
+            status: response.status,
           });
         }
       });
@@ -29,8 +31,9 @@ export default function Details() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text style={{ fontSize: 32 }}>ID: {params.id} </Text>
-      <Text style={{ fontSize: 32 }}>Quantidade: {data.quantity}</Text>
-      <Text style={{ fontSize: 32 }}>Nome: {data.name}</Text>
+      <Text style={{ fontSize: 32 }}>Quantidade: {data.bookName}</Text>
+      <Text style={{ fontSize: 32 }}>Nome: {data.author}</Text>
+      <Text style={{ fontSize: 32 }}>Nome: {data.status}</Text>
     </View>
   );
 }

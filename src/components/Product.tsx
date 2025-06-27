@@ -8,8 +8,9 @@ import {
 
 type Props = PressableProps & {
   data: {
-    name: string;
-    quantity: number;
+    bookName: string;
+    author: string;
+    status: string;
   };
   onDelete: () => void;
   onOpen: () => void;
@@ -28,7 +29,7 @@ export function Product({ data, onDelete, onOpen, ...rest }: Props) {
       {...rest}
     >
       <Text style={{ flex: 1 }}>
-        {data.quantity} - {data.name}
+        {data.bookName} - {data.author} - {data.status}
       </Text>
       <TouchableOpacity onPress={onDelete}>
         <MaterialIcons name="delete" size={24} color="red" />

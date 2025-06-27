@@ -10,8 +10,9 @@ import { Alert, Button, FlatList, View } from "react-native";
 
 export default function Index() {
   const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [bookName, setBookName] = useState("");
+  const [author, setAuthor] = useState("");
+  const [status, setStatus] = useState("");
   const [products, setProducts] = useState<ProductDataBase[]>([]);
   const [search, setSearch] = useState("");
 
@@ -19,15 +20,10 @@ export default function Index() {
 
   async function create() {
     try {
-      if (isNaN(Number(quantity))) {
-        return Alert.alert(
-          "Quantidade",
-          "A quantidade precisa ser um numero valido"
-        );
-      }
       const response = await productDataBase.create({
-        name,
-        quantity: Number(quantity),
+        bookName,
+        author,
+        status,
       });
 
       Alert.alert("Produto cadastrado com o ID:  " + response.insertedRowId);
@@ -38,19 +34,14 @@ export default function Index() {
 
   async function update() {
     try {
-      if (isNaN(Number(quantity))) {
-        return Alert.alert(
-          "Quantidade",
-          "A quantidade precisa ser um numero valido"
-        );
-      }
       const response = await productDataBase.update({
         id: Number(id),
-        name,
-        quantity: Number(quantity),
+        bookName,
+        author,
+        status,
       });
 
-      Alert.alert("Produto atualizado!");
+      Alert.alert("Livro atualizado!");
     } catch (error) {
       console.log(error);
     }
@@ -76,8 +67,9 @@ export default function Index() {
 
   function details(item: ProductDataBase) {
     setId(String(item.id));
-    setName(item.name);
-    setQuantity(String(item.quantity));
+    setBookName(item.bookName);
+    setAuthor(item.author);
+    setStatus(item.status);
   }
 
   async function handleSave() {
@@ -88,8 +80,9 @@ export default function Index() {
     }
 
     setId("");
-    setName("");
-    setQuantity("");
+    setBookName("");
+    setAuthor("");
+    setStatus("");
     await list();
   }
 
@@ -99,12 +92,13 @@ export default function Index() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", padding: 32, gap: 16 }}>
-      <Input placeholder="Nome" onChangeText={setName} value={name} />
       <Input
-        placeholder="Quantidade"
-        onChangeText={setQuantity}
-        value={quantity}
+        placeholder="Nome do livro"
+        onChangeText={setBookName}
+        value={bookName}
       />
+      <Input placeholder="Autor" onChangeText={setAuthor} value={author} />
+      <Input placeholder="Status" onChangeText={setStatus} value={status} />
       <Button title="Salvar" onPress={handleSave} />
 
       <Input placeholder="Pesquisar" onChangeText={setSearch} />
