@@ -5,16 +5,10 @@ export default function Start() {
   const router = useRouter();
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 16,
-      }}
-    >
-      <Text style={{ fontSize: 24 }}>Bem-vindo ao App de Livros 📚</Text>
+    <View>
+      <Text className="text-2xl">Bem-vindo ao App de Livros 📚</Text>
       <Button title="Entrar" onPress={() => router.replace("/home")} />
+      <Text className="mt-10 text-slate-950">Lala</Text>
     </View>
   );
 }
